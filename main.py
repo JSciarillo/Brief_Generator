@@ -39,35 +39,44 @@ class BriefRequest(BaseModel):
     purpose: str
     talking_points: str
 
+# @app.post("/generate-brief")
+# async def generate_brief(req: BriefRequest):
+#     content = f"""
+# Executive Meeting Brief
+
+# Customer: {req.customer}
+# Meeting Date/Time: {req.meeting_date}
+# Location/Format: {req.location}
+
+# Executive Summary:
+# {req.executive_summary}
+
+# Company Overview:
+# {req.company_overview}
+
+# Customer Attendees:
+# {req.attendees}
+
+# Internal Team Participants:
+# {req.internal_team}
+
+# Deal Insights:
+# {req.deal_insights}
+
+# Meeting Purpose:
+# {req.purpose}
+
+# Key Talking Points:
+# {req.talking_points}
+# """
+#     doc_link = create_google_doc(content)
+#     return {"status": "success", "link": doc_link}
+
 @app.post("/generate-brief")
 async def generate_brief(req: BriefRequest):
-    content = f"""
-Executive Meeting Brief
+    return {
+        "status": "success",
+        "link": "https://docs.google.com/document/d/1Zf1234567890EXAMPLE/edit"
+    }
 
-Customer: {req.customer}
-Meeting Date/Time: {req.meeting_date}
-Location/Format: {req.location}
 
-Executive Summary:
-{req.executive_summary}
-
-Company Overview:
-{req.company_overview}
-
-Customer Attendees:
-{req.attendees}
-
-Internal Team Participants:
-{req.internal_team}
-
-Deal Insights:
-{req.deal_insights}
-
-Meeting Purpose:
-{req.purpose}
-
-Key Talking Points:
-{req.talking_points}
-"""
-    doc_link = create_google_doc(content)
-    return {"status": "success", "link": doc_link}
